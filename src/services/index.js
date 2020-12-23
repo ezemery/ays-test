@@ -14,7 +14,7 @@ export const getPhotos = () => {
 }
 
 export const searchPhotos = (search) => {
-    return   fetch(`https://api.unsplash.com/search/photos?page=1&query=${search}&client_id=${process.env.REACT_APP_ACCESSKEY}`, {
+    return  fetch(`https://api.unsplash.com/search/photos?page=1&query=${search}&client_id=${process.env.REACT_APP_ACCESSKEY}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

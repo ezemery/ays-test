@@ -1,4 +1,4 @@
-import {useContext, useState} from 'react'
+import {useContext, useState,useEffect} from 'react'
 import {Gridify} from '../Grid'
 import {Loading} from '../Loading'
 import {FetchStore} from '../../Context/store';
@@ -7,7 +7,7 @@ import {useHistory} from 'react-router-dom';
 
 import {Header,Input,Container,Button, Icon} from './styles'
 
-export const Home = () => {
+export const Home = ({fetchData}) => {
     const { photos, loading } = useContext(FetchStore);
     const history = useHistory();
     const fetchContext = useFetch();
@@ -15,6 +15,11 @@ export const Home = () => {
     const handleChange = (e) => {
         setSearch(e.target.value)
     }
+
+    useEffect(() => {
+        fetchData();
+          return () => {}
+      }, [])
 
     const handleKeyEvent = (e)=> {
         if(e.code === "Enter"){

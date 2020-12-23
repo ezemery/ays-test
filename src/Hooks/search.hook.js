@@ -1,4 +1,4 @@
-import {getPhotos} from "../services";
+import {searchPhotos} from "../services";
 import {useState,useCallback,useReducer } from 'react';
 
 const photosInitial = {
@@ -10,7 +10,7 @@ const photosInitial = {
 function usersReducer(state, action) {
     switch (action.type) {
         case 'success':
-            return {...state, photos: action.photos}
+            return {...state, photos: action.results}
         case 'loadingComplete':
             return {...state, loading:false}
         case 'loadingStart':
@@ -22,25 +22,24 @@ function usersReducer(state, action) {
     }
 } 
 
-export const useFetch = () => {
+export const useSearch = () => {
     const [p, setPhotoState] = useReducer(usersReducer, photosInitial);
 
-
-    const fetchDataAsync = async () => {
-        setPhotoState({type: 'loadingStart'})
+    const searchDataAsync = async (search) => {
+        setPhotoState({type: 'loadingStart'}) 
         try {
-            const photos = await getPhotos();
-            setPhotoState({type: 'success', photos})
+            const photos = await searchPhotos(search);
+            const results = photos.results
+            setPhotoState({type: 'success', results})
             setPhotoState({type: 'loadingComplete'})
         } catch (error) {
             setPhotoState({type: 'error'})
             setPhotoState({type: 'loadingComplete'})
         }
-    };
-
+    }
 
     return {
         ...p,
-        fetchDataAsync
+        searchDataAsync
     };
 };
