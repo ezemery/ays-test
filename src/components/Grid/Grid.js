@@ -19,7 +19,7 @@ export const Gridify = ({items}) => {
 
     return (
         <div>
-        <Grid>
+       { items.length  > 0?<Grid>
             {items.map((item,indx)=> 
             <Content key={indx} onClick={()=> openModal(item.id)}>
                 <LazyLoadImage src={item.urls.raw}/>
@@ -30,7 +30,7 @@ export const Gridify = ({items}) => {
                 </div>
             </Content>)}
            
-        </Grid>
+        </Grid>:<h1 style={{display:"flex", justifyContent:"center",color: "rgba(107, 114, 128, 1)" }}>No Results</h1>}
             {selectedPost.length > 0 && <Popup modalIsOpen={modalIsOpen} closeModal={closeModal} item={selectedPost}/>} 
         </div>
     )

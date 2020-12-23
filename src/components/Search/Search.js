@@ -22,7 +22,7 @@ export const Search = ({searchData}) => {
                     <h1 style={{color: "rgba(107, 114, 128, 1)" }}>{`Search Results for "${query}"`} </h1>
                 </Container>
             </Header>
-            { loading ?<Loading/>: <Gridify items={photos}/>}
+            { loading ? <Loading/>: <Gridify items={photos}/>}
         </div>
     )
 }
