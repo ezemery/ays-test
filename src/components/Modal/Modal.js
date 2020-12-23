@@ -1,4 +1,3 @@
-import Modal from 'react-modal';
 import {BrowseModal, Button,StyledIcon, Close, Content} from './styles'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import userEvent from '@testing-library/user-event';

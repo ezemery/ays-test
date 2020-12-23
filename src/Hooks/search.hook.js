@@ -1,5 +1,5 @@
 import {searchPhotos} from "../services";
-import {useState,useCallback,useReducer } from 'react';
+import {useReducer } from 'react';
 
 const photosInitial = {
     photos: [],

@@ -10,7 +10,6 @@ import {Header,Input,Container,Button, Icon} from './styles'
 export const Home = ({fetchData}) => {
     const { photos, loading } = useContext(FetchStore);
     const history = useHistory();
-    const fetchContext = useFetch();
     const [search, setSearch] = useState("")
     const handleChange = (e) => {
         setSearch(e.target.value)
