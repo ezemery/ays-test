@@ -7,7 +7,7 @@ const photosInitial = {
     error: false,
 };
 
-function usersReducer(state, action) {
+function fetchReducer(state, action) {
     switch (action.type) {
         case 'success':
             return {...state, photos: action.photos}
@@ -23,7 +23,7 @@ function usersReducer(state, action) {
 } 
 
 export const useFetch = () => {
-    const [p, setPhotoState] = useReducer(usersReducer, photosInitial);
+    const [p, setPhotoState] = useReducer(fetchReducer, photosInitial);
 
 
     const fetchDataAsync = async () => {

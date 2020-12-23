@@ -7,7 +7,7 @@ const photosInitial = {
     error: false,
 };
 
-function usersReducer(state, action) {
+function photosReducer(state, action) {
     switch (action.type) {
         case 'success':
             return {...state, photos: action.results}
@@ -23,7 +23,7 @@ function usersReducer(state, action) {
 } 
 
 export const useSearch = () => {
-    const [p, setPhotoState] = useReducer(usersReducer, photosInitial);
+    const [p, setPhotoState] = useReducer(photosReducer, photosInitial);
 
     const searchDataAsync = async (search) => {
         setPhotoState({type: 'loadingStart'}) 

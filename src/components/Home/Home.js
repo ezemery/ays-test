@@ -2,7 +2,6 @@ import {useContext, useState,useEffect} from 'react'
 import {Gridify} from '../Grid'
 import {Loading} from '../Loading'
 import {FetchStore} from '../../Context/store';
-import {useFetch} from "../../Hooks/fetch.hook";
 import {useHistory} from 'react-router-dom';
 
 import {Header,Input,Container,Button, Icon} from './styles'
