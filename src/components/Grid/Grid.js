@@ -1,7 +1,10 @@
-import {useState} from 'react'
-import {Grid, Content} from './styles'
+import {useState, useEffect} from 'react'
+import {Grid, Content, Container} from './styles'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import {Popup} from '../Modal';
+import { transitions } from "react-stack-grid";
+
+const { scaleDown } = transitions;
 
 export const Gridify = ({items}) => {
     const [selectedPost, setSelectedPost] = useState([]);
@@ -18,20 +21,27 @@ export const Gridify = ({items}) => {
       }
 
     return (
-        <div>
-       { items.length  > 0?<Grid>
+        <Container>
+       { items.length  > 0 ? 
+       <Grid 
+        columnWidth={200}
+        duration={0}
+        gutterHeight={10}
+        gutterWidth={10}
+        enableSSR={true}
+       >
             {items.map((item,indx)=> 
             <Content key={indx} onClick={()=> openModal(item.id)}>
                 <LazyLoadImage src={item.urls.raw}/>
                 <div className="overlay"></div>
                 <div className="bio">
                     <p>{item.user.name}</p>
-                    <span>@{item.user.instagram_username}</span>
+                    <span>{item.user.location}</span>
                 </div>
             </Content>)}
            
         </Grid>:<h1 style={{display:"flex", justifyContent:"center",color: "rgba(107, 114, 128, 1)" }}>No Results</h1>}
             {selectedPost.length > 0 && <Popup modalIsOpen={modalIsOpen} closeModal={closeModal} item={selectedPost}/>} 
-        </div>
+        </Container>
     )
 }

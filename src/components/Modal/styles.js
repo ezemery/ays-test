@@ -35,6 +35,9 @@ ${tw`flex flex-col`}
         ${tw`w-full h-72 object-cover rounded-t-md`}
     }
     p{
-        ${tw`pl-8 font-bold`}   
+        ${tw`pl-8 font-bold my-2`}   
+    }
+    span{
+        ${tw`pl-8 font-normal text-sm`}  
     }
 `

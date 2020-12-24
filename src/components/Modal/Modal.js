@@ -35,6 +35,7 @@ export const Popup = ({modalIsOpen,closeModal,item}) => {
             <Content>
                 <LazyLoadImage src={urls.raw}/>
                 <p>{user.name}</p>
+                <span>{user.location}</span>
             </Content>
             <Close>{closeButtonMarkup}</Close>
         </BrowseModal>
