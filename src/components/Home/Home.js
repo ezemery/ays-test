@@ -24,12 +24,16 @@ export const Home = ({fetchData}) => {
            history.push(`/search/${search}`);
         }
     }
+
+    const handleClick = ()=>{
+        history.push(`/search/${search}`);
+    }
     return (
         <div>
             <Header>
                 <Container>
                     <Input placeholder="Search for photo" value={search} onChange={handleChange} onKeyPress={handleKeyEvent}/>
-                    <Button type="submit">
+                    <Button type="submit" onClick={handleClick}>
                         <Icon version="1.1" id="Capa_1" x="0px" y="0px"
                             viewBox="0 0 56.966 56.966"
                             width="512px" height="512px">

@@ -2,9 +2,9 @@ import {useState, useEffect} from 'react'
 import {Grid, Content, Container} from './styles'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import {Popup} from '../Modal';
-import { transitions } from "react-stack-grid";
+import { transitions, easings} from "react-stack-grid";
 
-const { scaleDown } = transitions;
+const transition = transitions.scaleDown;
 
 export const Gridify = ({items}) => {
     const [selectedPost, setSelectedPost] = useState([]);
@@ -24,14 +24,21 @@ export const Gridify = ({items}) => {
         <Container>
        { items.length  > 0 ? 
        <Grid 
-        columnWidth={200}
-        duration={0}
-        gutterHeight={10}
-        gutterWidth={10}
-        enableSSR={true}
+       monitorImagesLoaded
+       columnWidth={200}
+       duration={600}
+       gutterWidth={15}
+       gutterHeight={15}
+       easing={easings.cubicOut}
+       appearDelay={60}
+       appear={transition.appear}
+       appeared={transition.appeared}
+       enter={transition.enter}
+       entered={transition.entered}
+       leaved={transition.leaved}
        >
             {items.map((item,indx)=> 
-            <Content key={indx} onClick={()=> openModal(item.id)}>
+            <Content key={indx} onClick={()=> openModal(item.id)} className="grid-item">
                 <LazyLoadImage src={item.urls.raw}/>
                 <div className="overlay"></div>
                 <div className="bio">

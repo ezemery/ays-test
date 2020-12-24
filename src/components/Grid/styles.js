@@ -4,7 +4,9 @@ import StackGrid from "react-stack-grid";
 export const Container = styled.div`
 ${tw`max-w-3xl mx-auto -mt-10`}
 `;
-export const Grid = styled(StackGrid)``;
+export const Grid = styled(StackGrid)`
+${tw`max-w-3xl mx-auto grid sm:grid-cols-3 grid-cols-2 sm:gap-7 gap-2`}
+`;
 
 export const Content = styled.div`
     img{
